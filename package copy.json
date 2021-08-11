@@ -1,0 +1,20 @@
+{
+  "name": "earth",
+  "version": "1.0.0",
+  "description": "My first\"Project\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "Js.NodeJs.Express.RestApi.MongoDB"
+  ],
+  "author": "Matiko Mykola",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.5"
+  }
+}
