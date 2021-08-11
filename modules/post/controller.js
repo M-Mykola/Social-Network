@@ -45,9 +45,21 @@ const postController = {
       next(e);
     }
   },
+
   async findAll(req, res, next) {
     try {
       const post = await Post.find().populate("postedBy").populate("comments");
+      res.status(200).json(post);
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  async findUserPosts(req, res, next) {
+    try {
+      const post = await Post.find({ postedBy: req.params.id })
+        .populate("postedBy")
+        .populate("comments");
       res.status(200).json(post);
     } catch (e) {
       next(e);
