@@ -1,7 +1,6 @@
 const User = require("../user/schema");
 
 const bcrypt = require("bcryptjs");
-
 const jwt = require("jsonwebtoken");
 
 const authController = {
@@ -12,11 +11,10 @@ const authController = {
       if (!(name && email && password)) {
         res.status(400).send("All input is required");
       }
-
       const oldUser = await User.findOne({ email });
       console.log(password);
       if (oldUser) {
-        return res.status(409).send("User Already Exist. Please Login");
+        return res.status(409).send("User is Already Exist. Please Login");
       }
 
       const encryptedPassword = await bcrypt.hash(password, 10);
@@ -29,7 +27,7 @@ const authController = {
         password: encryptedPassword,
       });
 
-      res.status(200).json(user);
+      return res.status(201).json("Welcome");
     } catch (e) {
       next(e);
     }

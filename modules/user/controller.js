@@ -14,7 +14,7 @@ const UserController = {
         password: req.body.password,
       });
       console.log(user);
-      res.status(200).json(user);
+      res.status(201).json("welcome");
     } catch (e) {
       next(e);
     }
