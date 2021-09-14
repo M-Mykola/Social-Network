@@ -19,7 +19,6 @@ const UserController = {
       next(e);
     }
   },
-
   async addFriend(req, res, next) {
     const friend = await User.findById(req.params.id);
     if (!friend) {

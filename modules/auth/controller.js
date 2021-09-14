@@ -26,8 +26,7 @@ const authController = {
         email: email.toLowerCase(),
         password: encryptedPassword,
       });
-
-      return res.status(201).json("Welcome");
+      return res.status(201).json("User created");
     } catch (e) {
       next(e);
     }
