@@ -14,9 +14,10 @@ app.use(
 
 app.use(express.json());
 app.use(router);
+app.use(cors());
 
 mongooseConnection();
 
 app.listen(process.env.PORT, function () {
-  console.log("Express server listening on port 3000");
+  console.log(`Express server listening on port ${process.env.PORT}`);
 });

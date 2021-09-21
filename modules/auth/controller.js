@@ -55,8 +55,7 @@ const authController = {
           expiresIn: "1d",
         }
       );
-
-      res.status(200).json({ user, token });
+      res.status(200).json({ user_name, token });
     } catch (e) {
       next(e);
     }
@@ -64,7 +63,6 @@ const authController = {
   async verifyToken(req, res, next) {
     const token =
       req.body.token || req.query.token || req.headers["x-access-token"];
-
     if (!token) {
       return res.status(403).send("A token is required for authentication");
     }
@@ -77,5 +75,4 @@ const authController = {
     return next();
   },
 };
-
 module.exports = authController;
