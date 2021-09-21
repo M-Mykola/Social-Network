@@ -4,8 +4,7 @@ const User = require("./schema");
 const UserController = {
   async create(req, res, next) {
     try {
-      const re =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const re = /\S+@\S+\.\S+/;
       const test = re.test(String(req.body.email).toLowerCase());
       if (!test) return res.status(401).json({ error: "Invalid email" });
       const user = await User.create({
