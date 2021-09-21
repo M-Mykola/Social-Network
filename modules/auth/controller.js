@@ -7,7 +7,6 @@ const authController = {
   async register(req, res, next) {
     try {
       const { name, email, password } = req.body;
-
       if (!(name && email && password)) {
         res.status(400).send("All input is required");
       }
