@@ -5,7 +5,7 @@ const UserController = {
   async create(req, res, next) {
     try {
       const re = /\S+@\S+\.\S+/;
-      const test = re.test(String(req.body.email).toLowerCase());
+      re.test(String(email).toLowerCase());
       if (!test) return res.status(401).json({ error: "Invalid email" });
       const user = await User.create({
         name: req.body.name,

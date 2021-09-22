@@ -7,6 +7,10 @@ const authController = {
   async register(req, res, next) {
     try {
       const { name, email, password } = req.body;
+      const re = /\S+@\S+\.\S+/;
+      const test = re.test(String(req.body.email).toLowerCase());
+      if (!test) return res.status(401).json({ error: "Invalid email" });
+
       if (!(name && email && password)) {
         res.status(400).send("All input is required");
       }
@@ -54,7 +58,7 @@ const authController = {
           expiresIn: "1d",
         }
       );
-      res.status(200).json({ user_name, token });
+      res.status(200).json({ user, token });
     } catch (e) {
       next(e);
     }
